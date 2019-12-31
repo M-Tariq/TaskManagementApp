@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "604620408391",
+    "firebase_url": "https://officetaskmanagement-ef050.firebaseio.com",
+    "project_id": "officetaskmanagement-ef050",
+    "storage_bucket": "officetaskmanagement-ef050.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604620408391:android:34a6ae6e06fab733fc1362",
+        "android_client_info": {
+          "package_name": "com.example.officetaskmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604620408391-hrskft46hgl7ploha8fepon9lp9nvr0c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.officetaskmanagement",
+            "certificate_hash": "bca7f5e451e98d1202c8c77fbb87e24fe510156b"
+          }
+        },
+        {
+          "client_id": "604620408391-hig5b79u27gdrbpf6p84nteq646rhr9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADWufrTgQbcEeTHNYh3nTUZxPQ3cvSD4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604620408391-hig5b79u27gdrbpf6p84nteq646rhr9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

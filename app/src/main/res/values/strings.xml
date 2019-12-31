@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DTM</string>
+    <string name="splashscreen">SplashScreen</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signup">Don\'t have account? Sign Up Here!</string>
+    <string name="save">Save</string>
+    <string name="noteLabel">Note:</string>
+    <string name="titleLabel">Title:</string>
+
+</resources>
