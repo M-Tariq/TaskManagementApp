@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
     ProgressDialog progressDialog;
+    CheckBox checkBox;
+
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         edtEmail=findViewById(R.id.edt_email_login_id);
         edtPass=findViewById(R.id.edt_password_login_id);
+
+        checkBox=findViewById(R.id.remember_me);
+
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+
         mAuth=FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser()!=null){
             startActivity(new Intent(this, HomeActivity.class));
@@ -46,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view) {
 
+        //sharedpref
+        if(checkBox.isChecked()){
+            email=edtEmail.getText().toString().trim();
+            pass=edtPass.getText().toString().trim();
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString("email", email);
+            editor.putString("pass", pass);
+            editor.commit();
+        }
+
         if(view.getId()==R.id.tv_forgotpass){
             Toast.makeText(this, "Forgot Password Clicked.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, ForgotPasswordActivity.class));
@@ -53,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if(view.getId()==R.id.btn_login){
             Toast.makeText(this, "Login Clicked", Toast.LENGTH_SHORT).show();
-
             email=edtEmail.getText().toString().trim();
             pass=edtPass.getText().toString().trim();
+
             if(TextUtils.isEmpty(email)){
                 edtEmail.setError("Email Reuired.");
                 return;
@@ -64,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 edtPass.setError("Password Reuired.");
                 return;
             }
-
             else{
                 progressDialog.setMessage("Processing...");
                 progressDialog.show();
@@ -79,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                             finish();
                         }
                         else{
-
                             progressDialog.dismiss();
                             if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){
                                 edtPass.setError("Invalid Password.");
@@ -89,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
                                 edtEmail.setError("This Email address is not Register.");
                                 Toast.makeText(MainActivity.this, "This Email address is not Register.", Toast.LENGTH_SHORT).show();
                             }
-
                         }
                     }
                 });
@@ -107,5 +124,18 @@ public class MainActivity extends AppCompatActivity {
             if(rememberMe.isChecked())
             Toast.makeText(this, "Remember me checked.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //sharedpref
+        SharedPreferences prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
+        Toast.makeText(this, "OnStart", Toast.LENGTH_SHORT).show();
+        String email=prefs.getString("email", null);
+        String pass=prefs.getString("pass", null);
+        edtEmail.setText(email);
+        edtPass.setText(pass);
+        Toast.makeText(this, "OnStart"+email+pass, Toast.LENGTH_SHORT).show();
     }
 }
