@@ -136,6 +136,6 @@ public class MainActivity extends AppCompatActivity {
         String pass=prefs.getString("pass", null);
         edtEmail.setText(email);
         edtPass.setText(pass);
-        Toast.makeText(this, "OnStart"+email+pass, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "OnStart"+email+pass, Toast.LENGTH_SHORT).show();
     }
 }

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   android:background="@drawable/back_design"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/back_design"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dp">
@@ -33,7 +34,10 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textColorHighlight="@color/white"/>
-
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true">
     <EditText
         android:id="@+id/edt_password_login_id"
         android:layout_width="match_parent"
@@ -43,10 +47,13 @@
         android:background="@drawable/edt_design"
         android:drawableLeft="@drawable/pass"
         android:drawablePadding="10dp"
+        android:inputType="textPassword"
         android:hint="Password"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textColorHighlight="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
