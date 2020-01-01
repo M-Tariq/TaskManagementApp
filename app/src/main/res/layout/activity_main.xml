@@ -37,7 +37,11 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        android:textColorHint="@android:color/white"
+        app:boxStrokeColor="@color/white"
+        app:passwordToggleTint="#FFF"
+        >
     <EditText
         android:id="@+id/edt_password_login_id"
         android:layout_width="match_parent"
@@ -45,13 +49,12 @@
         android:layout_margin="10dp"
         android:padding="15dp"
         android:background="@drawable/edt_design"
-        android:drawableLeft="@drawable/pass"
+        android:drawableStart="@drawable/pass"
         android:drawablePadding="10dp"
         android:inputType="textPassword"
         android:hint="Password"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"/>
+        />
     </com.google.android.material.textfield.TextInputLayout>
 
 

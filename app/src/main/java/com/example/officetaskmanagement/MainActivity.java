@@ -46,9 +46,7 @@ public class MainActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
         mAuth=FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser()!=null){
-            startActivity(new Intent(this, HomeActivity.class));
-        }
+
         progressDialog=new ProgressDialog(this);
     }
 
@@ -129,13 +127,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //sharedpref
-        SharedPreferences prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
-        Toast.makeText(this, "OnStart", Toast.LENGTH_SHORT).show();
-        String email=prefs.getString("email", null);
-        String pass=prefs.getString("pass", null);
-        edtEmail.setText(email);
-        edtPass.setText(pass);
-        //Toast.makeText(this, "OnStart"+email+pass, Toast.LENGTH_SHORT).show();
+        String email = sharedpreferences.getString("email", null);
+        String pass = sharedpreferences.getString("pass", null);
+        if(mAuth.getCurrentUser()!=null){
+            startActivity(new Intent(this, HomeActivity.class));
+        }
+        if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) ) {
+            edtEmail.setText(email);
+            edtPass.setText(pass);
+        }
+
+
     }
 }

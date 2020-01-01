@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/back_design"
     android:orientation="vertical"
     android:gravity="center"
@@ -9,12 +10,12 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/task_app_logo"
+        android:src="@mipmap/task_app_logo"
         android:contentDescription="Logo"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please Join Us Here."
+        android:text="Please Join Us"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -34,7 +35,12 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textColorHighlight="@color/white"/>
-
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColorHint="@android:color/white"
+    app:passwordToggleEnabled="true"
+    app:passwordToggleTint="@color/white">
     <EditText
         android:id="@+id/edt_password_signup_id"
         android:layout_width="match_parent"
@@ -49,7 +55,7 @@
         android:textColor="@color/white"
         android:textColorHighlight="@color/white"
         android:textColorHint="@color/white" />
-
+</com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_register_signupActivity"
