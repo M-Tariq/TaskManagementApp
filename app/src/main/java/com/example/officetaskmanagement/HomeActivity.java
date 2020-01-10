@@ -29,6 +29,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +42,7 @@ import java.util.zip.Inflater;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     Button saveBtn;
     FloatingActionButton fabBtn;
@@ -67,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mAuth=FirebaseAuth.getInstance();
         firebaseUser=mAuth.getCurrentUser();
@@ -77,6 +80,12 @@ public class HomeActivity extends AppCompatActivity {
         toolbar=(Toolbar) findViewById(R.id.toolbar_home);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("My Task App");
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "id");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "tariq");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
 
         //Recyclerview...
